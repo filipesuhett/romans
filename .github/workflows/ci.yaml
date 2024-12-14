@@ -38,22 +38,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Install SonarScanner
-        run: |
-          curl -L -o sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.0.2856-linux.zip
-          unzip sonar-scanner.zip -d $HOME
-          export PATH="$HOME/sonar-scanner-4.8.0.2856-linux/bin:$PATH"
-          echo "SonarScanner installed at: $HOME/sonar-scanner-4.8.0.2856-linux/bin/sonar-scanner"
-          echo "PATH=$PATH"
-
-      - name: Run SonarScanner
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@master
+        with:
+          organization: filipesuhett
+          projectKey: filipesuhett_romans
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          sonar-scanner \
-            -Dsonar.projectKey=filipesuhett_romans \
-            -Dsonar.organization=filipesuhett \
-            -Dsonar.sources=src \
-            -Dsonar.tests=tests \
-            -Dsonar.language=py \
-            -Dsonar.sourceEncoding=UTF-8
