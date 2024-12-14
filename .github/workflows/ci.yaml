@@ -63,11 +63,10 @@ jobs:
         uses: SonarSource/sonarcloud-github-action@v2
         with:
           projectBaseDir: .
-          sonar.projectFile: ./sonarqube-project.properties
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_ORGANIZATION: ${{ secrets.SONAR_ORGANIZATION }}
+          SONAR_PROJECT_KEY: ${{ secrets.SONAR_PROJECT_KEY }}  # Define o project key aqui
           JAVA_HOME: /opt/hostedtoolcache/jdk/17/x64
           SONAR_SCANNER_OPTS: "-Dsonar.java.jdkHome=/opt/hostedtoolcache/jdk/17/x64"
           SONAR_SCANNER_JAVA: /opt/hostedtoolcache/jdk/17/x64/bin/java
-
