@@ -63,10 +63,9 @@ jobs:
         uses: SonarSource/sonarcloud-github-action@v2
         with:
           projectBaseDir: .
-          sonar.organization: ${{ secrets.SONAR_ORGANIZATION }}
-          sonar.projectKey: filipesuhett_romans  # Substitua pelo seu projectKey
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_ORGANIZATION: ${{ secrets.SONAR_ORGANIZATION }}
           JAVA_HOME: /opt/hostedtoolcache/jdk/17/x64
           SONAR_SCANNER_OPTS: "-Dsonar.java.jdkHome=/opt/hostedtoolcache/jdk/17/x64"
           SONAR_SCANNER_JAVA: /opt/hostedtoolcache/jdk/17/x64/bin/java
